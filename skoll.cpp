@@ -134,13 +134,13 @@ bool find_foad_metric(const LieGroup& G, const FindMetricParameters& p,ostream& 
 
 bool find_any_ricciflat_metric(const LieGroup& G, const FindMetricParameters& p,ostream& os) {	
 	stringstream foad_stream, filtered_stream, sigma_stream;
-	if (find_filtered_metric(G,p,filtered_stream)) {
-			os<<"(F1)--(F5):"<<filtered_stream.str();
-			return true;
-	}
-	else if (find_foad_metric(G,p,foad_stream)) {
+	if (find_foad_metric(G,p,foad_stream)) {
 		os<<"(G1)--(G5):"<<foad_stream.str();			
 		return true;
+	}
+	else if (find_filtered_metric(G,p,filtered_stream)) {
+			os<<"(F1)--(F5):"<<filtered_stream.str();
+			return true;
 	}
 	else if (find_sigmadiagonal_metric(G,p,sigma_stream)) {
 		os<<"&"<<sigma_stream.str();
